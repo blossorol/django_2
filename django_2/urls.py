@@ -18,8 +18,15 @@ from django.contrib import admin
 from django.urls import path
 
 from firstapp import views
+from firstapp.views import IndexView
+from firstapp.views import logout,logon,login
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("users/", views.users)
+    path("users/", views.users),
+    path('', IndexView.as_view(), name='index.html'),
+    path('login/', login, name='login'),
+    path('logon/', logon, name='logon'),
+    path('logout/', logout, name='logout'),
+    # 首页URI
 ]

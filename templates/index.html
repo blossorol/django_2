@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>博客</title>
+    <link rel="stylesheet" href="./static/reset.css">
+    <style>
+        nav {
+            height: 60px;
+            background: grey;
+        }
+
+        #main {
+            width: 1100px;
+            height: 500px;
+            background: green;
+            margin: 0px auto;
+        }
+
+        #left {
+            width: 805px;
+            height: 500px;
+            background: red;
+            float: left;
+        }
+
+        #right {
+            width: 275px;
+            height: 500px;
+            background: greenyellow;
+            float: right;
+        }
+
+        footer {
+            height: 50px;
+            background: rgb(34, 34, 34);
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>蜗牛的博客</h1>
+    <h4>学习 体验 成长</h4>
+</header>
+<nav>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">导航</a></li>
+        <li><a href="#">导航</a></li>
+        <li><a href="#">导航</a></li>
+    </ul>
+</nav>
+<div id="main">
+    <div id="left">
+        <article>
+            {% for Articles in all_Article %}
+                <h2>{{ Articles.article_title }}</h2>
+                <span>发表于</span>
+                <!--文章的发表时间，用装饰器date指定显示格式-->
+                <span><time>{{ Articles.article_create_time|date:'Y-m-d' }}</time></span>
+                <span>{{ Articles.article_category.name }}</span>
+                <p>{{ Articles.article_content }}</p>
+            {% endfor %}
+        </article>
+    </div>
+    <div id="right"></div>
+</div>
+<footer>
+    Copyright &copy; 2023 花卷
+</footer>
+
+</body>
+</html>
